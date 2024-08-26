@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+</head>
+<body>
+   <h1 class="" style="padding-left:623px;">Delete Book</h1>
+   
+    <div class="border border-primary p-2 mb-2 border-opacity-50 w-50 p-3 mx-auto p-2">
+    <form method="POST" action="{% url 'display'  %} " >
+        {% csrf_token %}
+
+        <label for="title">Title:</label>
+        <input type="text" class="form-control" id="title" name="title" value="{{book.title}}"required>
+        <label for="price">price:</label>
+        <input type="text" class="form-control w-3" name="price" value="{{book.price}}">
+        <label for="Author">Author:</label>
+        <select class="form-control" id="author" name="author">
+
+            <option>select</option>
+            {% for authors in author %}
+                <option>{{ authors.author }}</option>
+            {% endfor %}
+        </select>
+       <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+    </div>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>

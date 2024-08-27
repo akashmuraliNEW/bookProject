@@ -1,4 +1,8 @@
 Django>=4.2
 gunicorn>=20.0.4
+<<<<<<< HEAD
 whitenoise
 pillow
+=======
+whitenoise
+>>>>>>> f862372 (middle)

@@ -15,12 +15,15 @@
 
         <label for="title">Title:</label>
         <input type="text" class="form-control" id="title" name="title" value="{{book.title}}"required>
+        <label for="Author">image:</label>
+        <input type="file" class="form-control w-3" name="image">
         <label for="price">price:</label>
         <input type="text" class="form-control w-3" name="price" value="{{book.price}}">
         <label for="Author">image:</label>
         <input type="file" class="form-control w-3" name="image">
         <label for="Author">Author:</label>
         <select class="form-control" id="author" name="author">
+
 
             <option>select</option>
             {% for authors in author %}

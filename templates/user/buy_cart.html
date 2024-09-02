@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <style>
+    /* Add some basic styling to the payment form */
+    #card-element {
+        padding: 10px;
+        width: 501px;
+        border: 1px solid #ccc;
+        border-radius: 5px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        justify-content: centre;
+        
+    }
+
+
+</style>
+    <h1>Confirm Your Purchase</h1>
+  <p>Total: ${{ total }}</p>
+
+  <!-- Stripe payment form -->
+  <form id="payment-form">
+    <div id="card-element">
+      <!-- A Stripe Element will be inserted here. -->br
+    </div>
+    <form id="payment-form" data-secret="{{ payment_intent.client_secret }}">
+      <!-- ... -->
+    </form>
+    <button id="submit">Submit Payment</button>
+    <p id="payment-status"></p>
+  </form>
+
+  <!-- JavaScript code to handle the payment form -->
+  <script src="https://js.stripe.com/v3/"></script>
+  <script>
+    const stripe = Stripe('pk_test_51PthdTJJgbTVJRUfFZUeRTwjTiYISDqy6dFUA2buzx7310zRTnDfLwtDajJy1EPENlD92j5pgWdb1n5pNYzv4jWe00X6FzHCIz');
+    const elements = stripe.elements();
+
+    // Set up the payment form
+    const cardElement = elements.create('card');
+    cardElement.mount('#card-element');
+
+    // Handle the form submission
+    const form = document.getElementById('payment-form');
+    form.addEventListener('submit', async (event) => {
+      event.preventDefault();
+      const { token } = await stripe.createToken(cardElement);
+      if (token) {
+        // Send the token to the server to charge the customer
+        const paymentIntentId = '{{ payment_intent.id }}';
+        const url = '/payment_success/?payment_intent_id=' + paymentIntentId;
+        window.location.href = url;
+      } else {
+        // Handle errors
+        document.getElementById('payment-status').textContent = 'Error: Unable to create token.';
+      }
+    });
+  </script>
+</body>
+</html>

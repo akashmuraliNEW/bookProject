@@ -9,7 +9,7 @@ class Author(models.Model):
 class Book(models.Model):
     title = models.CharField(max_length=200)
     author = models.ForeignKey(Author, on_delete=models.CASCADE)
-    price = models.IntegerField(max_length=100)
+    price = models.IntegerField()
     image = models.ImageField(default='default_image.png', upload_to='book_images')
     def __str__(self):
         return self.title

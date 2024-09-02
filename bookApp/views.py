@@ -17,12 +17,12 @@ def homePage(request):
         obj.save()
         # print('done../')
         return redirect('display')
-    return render(request, 'home.html', {'author': author})
+    return render(request, 'admin/home.html', {'author': author})
 
 
 def display_books(request):
     books = Book.objects.all()
-    return render(request,'display_books.html',{'book':books})
+    return render(request,'admin/display_books.html',{'book':books})
 
 def update_books(request,id):
     author = Author.objects.all()
@@ -38,7 +38,7 @@ def update_books(request,id):
         book.author = author_obj
         book.save()
         return redirect('display')
-    return render(request, 'update_book.html', {'book': book, 'author': author})
+    return render(request, 'admin/update_book.html', {'book': book, 'author': author})
 
 
 def delete_book(request,id):
@@ -46,5 +46,5 @@ def delete_book(request,id):
     book = Book.objects.get(id=id)
     book.delete()
     
-    return render(request,'delete_book.html', {'book':book,'author':author})
+    return render(request,'admin/delete_book.html', {'book':book,'author':author})
     

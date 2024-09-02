@@ -10,17 +10,15 @@
    <h1 class="" style="padding-left:623px;">Update Book</h1>
    
     <div class="border border-primary p-2 mb-2 border-opacity-50 w-50 p-3 mx-auto p-2">
-    <form method="POST" >
+    <form method="POST" enctype="multipart/form-data">
         {% csrf_token %}
 
         <label for="title">Title:</label>
         <input type="text" class="form-control" id="title" name="title" value="{{book.title}}"required>
-        <label for="Author">image:</label>
-        <input type="file" class="form-control w-3" name="image">
         <label for="price">price:</label>
         <input type="text" class="form-control w-3" name="price" value="{{book.price}}">
-        <label for="Author">image:</label>
-        <input type="file" class="form-control w-3" name="image">
+        <label for="image">image:</label>
+        <input type="file" class="form-control w-3" name="images">
         <label for="Author">Author:</label>
         <select class="form-control" id="author" name="author">
 

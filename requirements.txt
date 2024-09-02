@@ -6,3 +6,4 @@ pillow
 =======
 whitenoise
 >>>>>>> f862372 (middle)
+stripe

@@ -30,7 +30,7 @@ def update_books(request,id):
     # print(book)
     if request.method == 'POST':
         book.title = request.POST['title']
-        book.image = request.POST['image']
+        book.image = request.FILES.get['image']
         print(book.title)
         book.price = request.POST['price']
         author_name = request.POST['author']
